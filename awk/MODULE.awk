@@ -6,6 +6,17 @@
 		# Extract the path from the match
 		path = arr[1]
 
+		# Check if file already included
+		check_cmd = "grep -Fxq \"" path "\" include.lst"
+		if (system(check_cmd) == 0) {
+			# Already included, skip
+			$0 = substr($0, 1, RSTART-1) substr($0, RSTART+RLENGTH)
+			next
+		}
+
+		# Mark as included
+		system("echo \"" path "\" >> include.lst")
+
 		# Output service info to stdout
 		system("echo Attempting to include module: " path " >&2")
 
