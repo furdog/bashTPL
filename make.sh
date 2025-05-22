@@ -10,15 +10,15 @@ if [ ! -f "$1" ]; then
 	exit 1
 fi
 
-export BASH_TEMPLATE_PROJECT_PATH=${PWD}
+export BASH_TEMPLATE_PROJECT_PATH="${PWD}"
 cd "$(dirname "$0")" || exit 1  # Go to script dir
-export BASH_TEMPLATE_ROOT_PATH=${PWD}
+export BASH_TEMPLATE_ROOT_PATH="${PWD}"
 
 if [ "$2" != "--continue" ]; then
 	> include.lst
-	mkdir -p  ${BASH_TEMPLATE_PROJECT_PATH}/build
-	rm    -rf ${BASH_TEMPLATE_PROJECT_PATH}/build/sections 2> /dev/null
-	mkdir -p  ${BASH_TEMPLATE_PROJECT_PATH}/build/sections
+	mkdir -p  "${BASH_TEMPLATE_PROJECT_PATH}/build"
+	rm    -rf "${BASH_TEMPLATE_PROJECT_PATH}/build/sections" 2> /dev/null
+	mkdir -p  "${BASH_TEMPLATE_PROJECT_PATH}/build/sections"
 fi
 
 #Попередньо виконаємо необхідні операції до користувацького файлу
